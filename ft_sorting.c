@@ -53,7 +53,7 @@ void	moove(t_nodes **o, t_nodes **g, int mode)
 		a_find_target((*o), (*g));
 	else if (mode == 0)
 		b_find_target((*o), (*g));
-	target_index = push_target((*o));
+	target_index = push_target((*o), (*g));
 	ft_mooving(o, g, target_index, mode);
 	do_push(o, g, mode);
 }

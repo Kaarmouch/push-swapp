@@ -32,7 +32,7 @@ void	do_swap(t_nodes **list, int mod)
 		printf("sa\n");
 	else
 		printf("sb\n");
-	prt_n((*list), 0);
+	//prt_n((*list), 0);
 }
 
 void	do_sswap(t_nodes **list_a, t_nodes **list_b)

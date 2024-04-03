@@ -40,15 +40,19 @@ void	a_find_target(t_nodes *a, t_nodes *b)
 		a_val = a->value;
 		while (b != NULL)
 		{
-			if (a_val > b->value && ((a_val - b->value) < diff))
+			if (a_val > b->value && (ft_abs(a_val, b->value) < diff))
 			{
-				diff = a_val - b->value;
+				printf("A : %i target %i\n",a_val, b->value);
+				diff = ft_abs(a_val, b->value);
 				a->target = b;
 			}
 			b = b->next;
 		}
 		if (diff == 2147483647)
+		{
+			printf("%i Non trouver\n",a_val);
 			a->target = get_nodes(max_pos(b), b, 0);
+		}
 		a = a->next;
 	}
 }
@@ -67,9 +71,9 @@ void    b_find_target(t_nodes *a, t_nodes *b)
                 a_val = a->value;
                 while (b != NULL)
                 {
-                        if (a_val < b->value && ((b->value - a_val) < diff))
+                        if (a_val < b->value && (ft_abs(a_val, b->value) < diff))
                         {
-                                diff = a_val - b->value;
+                                diff = ft_abs(a_val, b->value);
                                 a->target = b;
                         }
                         b = b->next;
@@ -81,34 +85,37 @@ void    b_find_target(t_nodes *a, t_nodes *b)
 }
 
 
-int	push_cost(t_nodes *list)
+int	push_cost(t_nodes *list, int len)
 {
 	int	median;
 	int	cost;
 
-	median = ft_nblist(list) / 2;
+	median = len / 2;
 	if (list->index <= median)
 		cost = list->index;
 	else
-		cost = ft_nblist(list) - list->index;
+		cost = len - list->index;
 	return (cost);
 }
 
-int	push_target(t_nodes *list_o)
+int	push_target(t_nodes *list_o, t_nodes *list_g)
 {
 	int	p_cost;
 	int	min;
 	int	idx_target;
 	int	cost_two;
+	int	len;
 
+	len = ft_nblist(list_o);
 	min = 2147483647;
 	idx_target = -1;
 	while (list_o != NULL)
 	{
-		cost_two = push_cost((list_o->target));
-		p_cost = push_cost(list_o) + cost_two;
+		cost_two = push_cost((list_o->target), ft_nblist(list_g));
+		p_cost = push_cost(list_o, len) + cost_two;
 		if (p_cost < min)
 		{
+
 			min = p_cost;
 			idx_target = list_o->index;
 		}

@@ -35,8 +35,7 @@ int	max_pos(t_nodes *list)
 	int	max;
 	int	max_id;
 	
-	max_id = 0;
-	max = list->value;
+	max = -2147483647;
 	while (list)
 	{
 		if (max < list->value)
@@ -54,9 +53,8 @@ int     min_pos(t_nodes *list)
         int     min;
         int     min_id;
 
-        min_id = 0;
-        min = list->value;
-        while (list != NULL)
+        min = 2147483647;
+        while (list)
         {
                 if (min > list->value)
                 {

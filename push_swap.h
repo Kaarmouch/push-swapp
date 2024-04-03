@@ -30,6 +30,7 @@ typedef struct s_nodes
 
 void	prt_n(t_nodes *a, t_nodes *b);
 
+int     ft_abs(int a, int b);
 t_nodes	*ft_lstlast(t_nodes *lst);
 t_nodes	*ft_lstnew(int value);
 void	ft_lstadd_front(t_nodes **lst, t_nodes *new);
@@ -40,8 +41,8 @@ int	ft_builder(t_nodes **a, char **argv);
 t_nodes *get_nodes(int discrim, t_nodes *list, int mod);
 void	a_find_target(t_nodes *a, t_nodes *b);
 void    b_find_target(t_nodes *a, t_nodes *b);
-int	push_cost(t_nodes *list);
-int	push_target(t_nodes *list_o);
+int	push_cost(t_nodes *list, int len);
+int	push_target(t_nodes *list_o, t_nodes *list_g);
 
 void	do_push(t_nodes **origine, t_nodes **goal, int mod);
 void	push_x(t_nodes **l_origine, t_nodes **l_goal);

@@ -11,6 +11,13 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
+int	ft_abs(int a, int b)
+{
+	if ((a - b) > 0)
+		return (a - b);
+	return ((a - b) * (-1));
+}
+
 int	is_doublon(char **list)
 {
 	int	i;
