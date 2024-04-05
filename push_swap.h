@@ -26,10 +26,6 @@ typedef struct s_nodes
 	struct s_nodes	*prev;
 }	t_nodes;
 
-
-
-void	prt_n(t_nodes *a, t_nodes *b);
-
 int     ft_abs(int a, int b);
 t_nodes	*ft_lstlast(t_nodes *lst);
 t_nodes	*ft_lstnew(int value);

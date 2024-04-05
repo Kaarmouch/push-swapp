@@ -13,9 +13,9 @@
 
 void	targ_on_top(t_nodes **list, int value, int mode)
 {
-	int	len_l;
+	int		len_l;
 	t_nodes	*info;
-	
+
 	info = get_nodes(value, (*list), 1);
 	len_l = ft_nblist((*list));
 	if (info->index <= (len_l / 2))
@@ -34,7 +34,7 @@ int	max_pos(t_nodes *list)
 {
 	int	max;
 	int	max_id;
-	
+
 	max = -2147483647;
 	while (list)
 	{
@@ -48,27 +48,28 @@ int	max_pos(t_nodes *list)
 	return (max_id);
 }
 
-int     min_pos(t_nodes *list)
+int	min_pos(t_nodes *list)
 {
-        int     min;
-        int     min_id;
+	int	min;
+	int	min_id;
 
-        min = 2147483647;
-        while (list)
-        {
-                if (min > list->value)
-                {
-                        min = list->value;
-                        min_id = list->index;
-                }
-                list = list->next;
-        }
-        return (min_id);
+	min = 2147483647;
+	while (list)
+	{
+		if (min > list->value)
+		{
+			min = list->value;
+			min_id = list->index;
+		}
+		list = list->next;
+	}
+	return (min_id);
 }
 
 void	ft_indexion(t_nodes *list)
 {
 	int	i;
+
 	i = 0;
 	while (list)
 	{
@@ -78,16 +79,17 @@ void	ft_indexion(t_nodes *list)
 	}
 }
 
-int     ft_nblist(t_nodes *list)
+int	ft_nblist(t_nodes *list)
 {
-        int     i;
-        i = 0;
-        if (list)
-                i = 1;
-        while (list && list->next != NULL)
-        {
-                list = list->next;
-                i++;
-        }
-        return (i);
+	int	i;
+
+	i = 0;
+	if (list)
+		i = 1;
+	while (list && list->next != NULL)
+	{
+		list = list->next;
+		i++;
+	}
+	return (i);
 }

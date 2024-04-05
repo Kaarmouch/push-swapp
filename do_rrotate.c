@@ -42,7 +42,6 @@ void	do_srrotate(t_nodes **list_a, t_nodes **list_b)
 	rrotate_x(list_a);
 	rrotate_x(list_b);
 	printf("rrr\n");
-	prt_n((*list_a), (*list_b));
 }
 
 void	loop_rrr(t_nodes **l_a, t_nodes **l_b, int a_val, int b_val)

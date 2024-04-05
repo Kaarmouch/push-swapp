@@ -9,27 +9,25 @@
 /*   Updated: 2023/11/07 17:13:14 by aglampor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
- #include "push_swap.h"
+#include "push_swap.h"
 
-t_nodes *get_nodes(int discrim, t_nodes *list, int mod)
+t_nodes	*get_nodes(int discrim, t_nodes *list, int mod)
 {
-        if (mod == 0)
-        {
-                while (discrim != list->index)
-                        list = list->next;
-        }
-        else
-                while (discrim != list->value)
-                        list = list->next;
-        return (list);
+	if (mod == 0)
+	{
+		while (discrim != list->index)
+			list = list->next;
+	}
+	else
+		while (discrim != list->value)
+			list = list->next;
+	return (list);
 }
-
-
 
 void	a_find_target(t_nodes *a, t_nodes *b)
 {
-	int	diff;
-	int	a_val;
+	int		diff;
+	int		a_val;
 	t_nodes	*first;
 
 	first = b;
@@ -42,7 +40,6 @@ void	a_find_target(t_nodes *a, t_nodes *b)
 		{
 			if (a_val > b->value && (ft_abs(a_val, b->value) < diff))
 			{
-				printf("A : %i target %i\n",a_val, b->value);
 				diff = ft_abs(a_val, b->value);
 				a->target = b;
 			}
@@ -50,40 +47,38 @@ void	a_find_target(t_nodes *a, t_nodes *b)
 		}
 		if (diff == 2147483647)
 		{
-			printf("%i Non trouver\n",a_val);
-			a->target = get_nodes(max_pos(b), b, 0);
+			a->target = get_nodes(max_pos(first), first, 0);
 		}
 		a = a->next;
 	}
 }
 
-void    b_find_target(t_nodes *a, t_nodes *b)
+void	b_find_target(t_nodes *a, t_nodes *b)
 {
-        int     diff;
-        int     a_val;
-        t_nodes *first;
+	int		diff;
+	int		a_val;
+	t_nodes	*first;
 
-        first = b;
-        while (a != NULL)
-        {
-                diff = 2147483647;
-                b = first;
-                a_val = a->value;
-                while (b != NULL)
-                {
-                        if (a_val < b->value && (ft_abs(a_val, b->value) < diff))
-                        {
-                                diff = ft_abs(a_val, b->value);
-                                a->target = b;
-                        }
-                        b = b->next;
-                }
-                if (diff == 2147483647)
-                        a->target = get_nodes(min_pos(b), b, 0);
-                a = a->next;
-        }
+	first = b;
+	while (a != NULL)
+	{
+		diff = 2147483647;
+		b = first;
+		a_val = a->value;
+		while (b != NULL)
+		{
+			if (a_val < b->value && (ft_abs(a_val, b->value) < diff))
+			{
+				diff = ft_abs(a_val, b->value);
+				a->target = b;
+			}
+			b = b->next;
+		}
+		if (diff == 2147483647)
+			a->target = get_nodes(min_pos(first), first, 0);
+		a = a->next;
+	}
 }
-
 
 int	push_cost(t_nodes *list, int len)
 {
@@ -115,7 +110,6 @@ int	push_target(t_nodes *list_o, t_nodes *list_g)
 		p_cost = push_cost(list_o, len) + cost_two;
 		if (p_cost < min)
 		{
-
 			min = p_cost;
 			idx_target = list_o->index;
 		}

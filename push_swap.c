@@ -28,16 +28,11 @@ void	free_nodes(t_nodes *nodes)
 int	ft_builder(t_nodes **a, char **argv)
 {
 	char	**okou;
-	int	i;
+	int		i;
 
 	if (argv[1] && ft_isstring(argv[1]))
 	{
 		okou = ft_split(argv[1], ' ');
-		if (is_doublon(okou))
-		{
-			free_free(okou);
-			return (0);
-		}
 		i = 0;
 		while (okou[i])
 		{
@@ -49,9 +44,7 @@ int	ft_builder(t_nodes **a, char **argv)
 	else
 	{
 		i = 1;
-		if(is_doublon(argv))
-			return (0);
-		while(argv[i])
+		while (argv[i])
 		{
 			ft_lstadd_back(a, ft_lstnew(ft_atoi(argv[i])));
 			i++;
@@ -64,7 +57,8 @@ int	main(int argc, char **argv)
 {
 	t_nodes	*a_node;
 	t_nodes	*b_node;
-	if (argc < 2 && argv[1] != NULL)
+
+	if ((argc < 2 && argv[1] != NULL) || is_doublon(argv))
 		return (0);
 	a_node = NULL;
 	b_node = NULL;

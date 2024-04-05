@@ -28,5 +28,4 @@ void	do_push(t_nodes **origine, t_nodes **goal, int mod)
 		printf("pa\n");
 	else
 		printf("pb\n");
-//	prt_n((*origine), (*goal));
 }

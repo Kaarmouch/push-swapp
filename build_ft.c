@@ -50,7 +50,7 @@ void	ft_lstadd_front(t_nodes **lst, t_nodes *new)
 
 t_nodes	*ft_lstlast(t_nodes *lst)
 {
-	t_nodes *temp;
+	t_nodes	*temp;
 
 	if (!lst)
 		return (NULL);
@@ -65,11 +65,16 @@ void	ft_delfrstnode(t_nodes **lst)
 	t_nodes	*temp;
 
 	if (lst == NULL || *lst == NULL)
-		return;
+		return ;
+	if (ft_nblist(*lst) == 1)
+	{
+		free(*lst);
+		*lst = NULL;
+		return ;
+	}
 	temp = *lst;
 	*lst = (*lst)->next;
 	(*lst)->prev = NULL;
 	ft_indexion((*lst));
 	free(temp);
 }
-

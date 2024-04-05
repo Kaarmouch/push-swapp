@@ -31,7 +31,6 @@ void	do_srotate(t_nodes **list_a, t_nodes **list_b)
 	rotate_x(list_a);
 	rotate_x(list_b);
 	printf("rr");
-	prt_n((*list_a), (*list_b));
 }
 
 void	loop_rr(t_nodes **l_a, t_nodes **l_b, int a_val, int b_val)
