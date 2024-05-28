@@ -1,4 +1,9 @@
-/* ************************************************************************** */
+/* ******************* if (list[1] && ft_isstring(list[1]))
+        {
+                okou = ft_split(list[1], ' ');
+if (list[1] && ft_isstring(list[1]))
+        {
+                okou = ft_split(list[1], ' ');******************************************************* */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
@@ -18,26 +23,26 @@ int	ft_abs(int a, int b)
 	return ((a - b) * (-1));
 }
 
-int	is_doublon(char **list)
+int	is_good(char **list)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
-	i = 1;
+	i = 0;
 	while (list[i])
 	{
+		if (list[i][0] != '0' && atoi(list[i]) == 0)
+			return (0);
 		j = i + 1;
 		while (list[j])
 		{
-			if ((atoi(list[i])) - (atoi(list[j])) == 0)
-			{
-				return (1);
-			}
+			if (atoi(list[i]) - atoi(list[j]) == 0)
+				return (0);
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
 void	free_free(char **build)

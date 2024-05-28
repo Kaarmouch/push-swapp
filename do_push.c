@@ -25,7 +25,7 @@ void	do_push(t_nodes **origine, t_nodes **goal, int mod)
 {
 	push_x(origine, goal);
 	if (mod == 0)
-		printf("pa\n");
-	else
 		printf("pb\n");
+	else
+		printf("pa\n");
 }

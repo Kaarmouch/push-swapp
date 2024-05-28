@@ -28,12 +28,11 @@ void	a_find_target(t_nodes *a, t_nodes *b)
 {
 	int		diff;
 	int		a_val;
-	t_nodes	*first;
+	t_nodes	*pt;
 
-	first = b;
+	pt = b;
 	while (a != NULL)
 	{
-		b = first;
 		diff = 2147483647;
 		a_val = a->value;
 		while (b != NULL)
@@ -45,38 +44,41 @@ void	a_find_target(t_nodes *a, t_nodes *b)
 			}
 			b = b->next;
 		}
+		b = pt;
 		if (diff == 2147483647)
 		{
-			a->target = get_nodes(max_pos(first), first, 0);
+			a->target = get_nodes(max_pos(b), b, 0);
 		}
 		a = a->next;
 	}
 }
 
-void	b_find_target(t_nodes *a, t_nodes *b)
+void	b_find_target(t_nodes *b, t_nodes *a)
 {
-	int		diff;
-	int		a_val;
-	t_nodes	*first;
+	int			diff;
+	int			b_val;
+	t_nodes		*pt;
 
-	first = b;
-	while (a != NULL)
+	pt = a;
+	while (b != NULL)
 	{
 		diff = 2147483647;
-		b = first;
-		a_val = a->value;
-		while (b != NULL)
+		b_val = b->value;
+		while (a != NULL)
 		{
-			if (a_val < b->value && (ft_abs(a_val, b->value) < diff))
+			if (a->value > b_val && (ft_abs(a->value, b_val) < diff))
 			{
-				diff = ft_abs(a_val, b->value);
-				a->target = b;
+				diff = ft_abs(a->value, b_val);
+				b->target = a;
 			}
-			b = b->next;
+			a = a->next;
 		}
+		a = pt;
 		if (diff == 2147483647)
-			a->target = get_nodes(min_pos(first), first, 0);
-		a = a->next;
+		{
+			b->target = get_nodes(min_pos(a), a, 0);
+		}
+		b = b->next;
 	}
 }
 

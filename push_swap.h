@@ -26,6 +26,9 @@ typedef struct s_nodes
 	struct s_nodes	*prev;
 }	t_nodes;
 
+void  ft_print(t_nodes *a, t_nodes *b);
+
+
 int     ft_abs(int a, int b);
 t_nodes	*ft_lstlast(t_nodes *lst);
 t_nodes	*ft_lstnew(int value);
@@ -63,7 +66,7 @@ int	ft_strlen(char *s);
 char	**ft_split(char *s, char c);
 int     ft_atoi(char *str);
 int     ft_nblist(t_nodes *list);
-int	is_doublon(char **list);
+int	is_good(char **list);
 int     min_pos(t_nodes *list);
 int	max_pos(t_nodes *list);
 int     ft_isstring(char *str);
